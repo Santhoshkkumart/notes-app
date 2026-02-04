@@ -49,6 +49,8 @@ mern-notes-app/
 │
 └── README.md
 
+yaml
+Copy code
 
 ---
 
@@ -59,34 +61,47 @@ Create a `.env` file inside the `backend/` folder:
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 
+yaml
+Copy code
+
 ---
 
 ## ▶️ Installation & Setup
 
 ### 1️⃣ Clone the repository
-
 git clone https://github.com/USERNAME/mern-notes-app.git
-
 cd mern-notes-app
+
+yaml
+Copy code
+
 ---
 
 ### 2️⃣ Backend setup
 
+```bash
 cd backend
 npm install
 npm run dev
+```
+
+yaml
+Copy code
 
 Backend runs at:
 http://localhost:5000
 
+yaml
+Copy code
 
 ---
 
 ### 3️⃣ Frontend setup
-
 cd frontend
 npm install
 npm run dev
 
+yaml
+Copy code
+
 Frontend runs at:
-http://localhost:5173
