@@ -76,7 +76,7 @@ cd your-repo-name
 * Navigate to the server directory and install dependencies:
 
 ```bash
-cd server
+cd backend
 npm install
 ```
 * Create a .env file in the /server folder:
@@ -97,7 +97,7 @@ RATE_LIMIT_MAX=100
 * Open a new terminal window, navigate to the client directory, and install dependencies:
 
 ```bash
-cd client
+cd frontend
 npm install
 ```
 
@@ -108,15 +108,15 @@ npm install
 
 ```bash
 
-cd server
+cd backend
 npm run dev   # or 'npm start' depending on your package.json
-Start the Frontend:
 ```
+* Start the Frontend:
 ```bash
-cd client
-npm start
+cd frontend
+npm run dev   # or 'npm start' depending on your package.json
 ```
-* The application should now be running at http://localhost:3000 and communicating with the API at http://localhost:5000.
+* The application should now be running at http://localhost:5001 and communicating with the API at http://localhost:5173.
 
 # 🛠️ Troubleshooting
 Rate Limit Errors: Since this app uses IP-based rate limiting, if you are testing the API frequently during development, you might see a 429 Too Many Requests error. You can temporarily increase the limit in your server code or restart the server to clear the memory store.
