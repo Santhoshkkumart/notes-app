@@ -22,14 +22,39 @@ This project demonstrates a public CRUD interface where users can post anonymous
 ## 📂 Project Structure
 
 ```bash
-├── client/          # React Frontend
-│   ├── src/
-│   └── public/
-├── server/          # Node/Express Backend
-│   ├── models/      # Mongoose Schemas
-│   ├── routes/      # API Routes
-│   ├── controllers/ # Logic for Notes
-│   └── index.js     # Entry point
+MERN-THINKBOARD
+├── backend
+│   ├── src
+│   │   ├── config
+│   │   │   ├── db.js
+│   │   │   └── upstash.js
+│   │   ├── controllers
+│   │   │   └── notesController.js
+│   │   ├── middleware
+│   │   │   └── rateLimiter.js
+│   │   ├── models
+│   │   │   └── Note.js
+│   │   ├── routes
+│   │   │   └── notesRoutes.js
+│   │   └── server.js
+│   ├── .env
+│   ├── package-lock.json
+│   └── package.json
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── lib
+│   │   ├── pages
+│   │   │   ├── CreatePage.jsx
+│   │   │   ├── Homepage.jsx
+│   │   │   └── NoteDetailPage.jsx
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   ├── tailwind.config.js
+│   └── vite.config.js
 └── README.md
 ```
 
@@ -62,6 +87,7 @@ MONGO_URI=your_mongodb_connection_string
 ```
 # Note: You can also define your Rate Limit settings here
 ```bash
+
 REDIS_URL=redis://127.0.0.1:6379
 RATE_LIMIT_WINDOW_MS=900000 
 RATE_LIMIT_MAX=100
