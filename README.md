@@ -43,7 +43,7 @@ Follow these instructions to get the project up and running on your local machin
 
 1.  **Clone the repository:**
     ```sh
-    git clone <YOUR_REPOSITORY_URL>
+    git <the repo url>
     cd mern-thinkboard
     ```
 
