@@ -2,16 +2,13 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Homepage";
 import CreatePage from "./pages/CreatePage";
 import NoteDetailPage from "./pages/NoteDetailPage";
-import toast from "react-hot-toast";
+
 const App = () => {
   return (
-    <div className="relative min-h-screen">
-        <div
-        className="absolute inset-0 -z-10 h-full w-full px-5 py-24
-        [background:radial-gradient(125%_125%_at_50%_10%,#000_60%,#00FF9D40_100%)]"
-      />
+    <div className="app-shell relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background:radial-gradient(circle_at_15%_10%,#1f5136_0%,transparent_35%),radial-gradient(circle_at_85%_0%,#173f2b_0%,transparent_30%)]" />
       <Routes>
-        <Route path="/" element={<HomePage />} /> 
+        <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/note/:id" element={<NoteDetailPage />} />
       </Routes>

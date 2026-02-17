@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen bg-[#060b08] text-zinc-100 antialiased;
+    font-family: "Sora", "Segoe UI", sans-serif;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen bg-[radial-gradient(circle_at_top,#153928_0%,#0a120e_45%,#060b08_100%)];
+  }
+
+  .app-container {
+    @apply mx-auto w-full max-w-6xl px-4 md:px-8;
+  }
+
+  .glass-panel {
+    @apply rounded-2xl border border-emerald-300/15 bg-zinc-900/70 backdrop-blur-md shadow-[0_10px_35px_rgba(0,0,0,0.35)];
+  }
+
+  .soft-input {
+    @apply w-full rounded-xl border border-emerald-300/20 bg-zinc-950/70 px-4 py-3 text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/60;
+  }
+
+  .primary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-300/20 bg-emerald-400 px-4 py-2.5 font-medium text-zinc-900 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .ghost-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-300/20 bg-zinc-900/60 px-4 py-2.5 text-zinc-200 transition hover:bg-zinc-800;
+  }
+}

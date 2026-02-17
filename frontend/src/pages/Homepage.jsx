@@ -1,27 +1,23 @@
-import Navbar from "../components/Navbar.jsx"
-import RateLimitedUI from "../components/RateLimitedUI.jsx";
 import { useEffect, useState } from "react";
-import NoteCard from "../components/NoteCard.jsx";
 import toast from "react-hot-toast";
+import Navbar from "../components/Navbar.jsx";
+import RateLimitedUI from "../components/RateLimitedUI.jsx";
+import NoteCard from "../components/NoteCard.jsx";
 import api from "../lib/axios.js";
 import EmptyState from "../components/EmptyState.jsx";
 
-
 const Homepage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false);
-  const [notes, setNotes] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchNotes = async () => {
       try {
         const res = await api.get("/notes");
-        console.log(res.data);
         setNotes(res.data);
         setIsRateLimited(false);
       } catch (error) {
-        console.log("error fetching notes");
-        console.log(error);
         if (error.response?.status === 429) {
           setIsRateLimited(true);
         } else {
@@ -30,46 +26,48 @@ const Homepage = () => {
       } finally {
         setLoading(false);
       }
-    }
+    };
+
     fetchNotes();
   }, []);
-  ;
 
   return (
-    <div className="home">
+    <div>
       <Navbar />
-      <div className="p-6 mt-4">
-        <div>
-          {isRateLimited && <RateLimitedUI />}
+      <main className="app-container py-10">
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold tracking-tight text-zinc-100 md:text-3xl">Your Notes</h2>
+          <p className="mt-1 text-sm text-zinc-400">
+            A clear space to create, revisit, and edit your ideas.
+          </p>
+        </div>
 
-          {loading && !isRateLimited && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse opacity-50">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-32 bg-gray-200 rounded-xl"
-                />
-              ))}
-            </div>
-          )}
-          {!loading && !isRateLimited && (
-            notes.length === 0 ? (
-              <EmptyState />) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {isRateLimited && <RateLimitedUI />}
+
+        {loading && !isRateLimited && (
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="glass-panel h-44 animate-pulse" />
+            ))}
+          </div>
+        )}
+
+        {!loading && !isRateLimited && (
+          <>
+            {notes.length === 0 ? (
+              <EmptyState />
+            ) : (
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {notes.map((note) => (
-                  <NoteCard
-                    key={note._id}
-                    note={note}
-                    setNotes={setNotes}
-                  />
+                  <NoteCard key={note._id} note={note} setNotes={setNotes} />
                 ))}
               </div>
-            )
-          )}
-
-        </div>
-      </div>
+            )}
+          </>
+        )}
+      </main>
     </div>
   );
-}
-export default Homepage
+};
+
+export default Homepage;
